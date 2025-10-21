@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PanoramaViewer from "./PanoramaViewer";
 
 interface Props {
@@ -5,29 +6,64 @@ interface Props {
 }
 
 function KokspecDesktop({ className = "" }: Props) {
+  const [viewIndex, setViewIndex] = useState(0);
+
+  const buttonBase =
+    "absolute w-[69px] h-[63px] rounded-full transition-all duration-300 hover:shadow-lg";
+
   return (
-    <div className={`relative top-1.5 -left-0.5 w-[1440px] h-[1024px] bg-white ${className}`}>
-      {/* 360度ビューを表示するエリア */}
-      <div className="absolute top-[197px] left-[103px] w-[751px] h-[629px] bg-[#d9d9d9] overflow-hidden rounded-lg">
-        <PanoramaViewer />
+    <div className={`relative w-[1440px] h-[1024px] bg-white ${className}`}>
+      {/* 360度ビュー */}
+      <div className="absolute top-[197px] left-[103px] w-[751px] h-[629px] bg-[#f9f9f9] overflow-hidden rounded-lg">
+        <PanoramaViewer viewIndex={viewIndex} />
       </div>
 
-      {/* テキストは削除してOK（ビューが入るので） */}
-      {/* <div className="absolute top-[504px] left-[399px] h-4 flex items-center justify-center text-black whitespace-nowrap">
-        360度カメラ画像挿入
-      </div> */}
+      {/* 他のUI */}
+      <div className="absolute top-[283px] left-[966px] w-[58px] h-[543px] bg-[#eaeaea]" />
+      <div className="absolute top-[555px] left-[980px] w-[382px] h-[65px] bg-[#eaeaea]" />
+      <div className="absolute top-[147px] left-[1301px] w-[61px] h-[459px] bg-[#eaeaea]" />
 
-      {/* 他のUIはそのまま */}
-      <div className="absolute top-[283px] left-[966px] w-[58px] h-[543px] bg-[#d9d9d9]" />
-      <div className="absolute top-[555px] left-[980px] w-[382px] h-[65px] bg-[#d9d9d9]" />
-      <div className="absolute top-[147px] left-[1301px] w-[61px] h-[459px] bg-[#d9d9d9]" />
-
-      <div className="absolute top-[295px] left-[960px] w-[69px] h-[63px] bg-[#fcff82] rounded-full" />
-      <div className="absolute top-[557px] left-[966px] w-[69px] h-[63px] bg-[#fcff82] rounded-full" />
-      <div className="absolute top-[763px] left-[955px] w-[69px] h-[63px] bg-[#fcff82] rounded-full" />
-      <div className="absolute top-[555px] left-[1293px] w-[69px] h-[63px] bg-[#fcff82] rounded-full shadow-md" />
-      <div className="absolute top-[147px] left-[1293px] w-[69px] h-[63px] bg-[#fcff82] rounded-full" />
-      <div className="absolute top-[295px] left-[960px] w-[69px] h-[63px] bg-[#fcff82] rounded-full" />
+      {/* 黄色い丸ボタン（縁を細く赤に） */}
+      <button
+        className={`${buttonBase} top-[147px] left-[1293px] ${
+          viewIndex === 0
+            ? "bg-[#fcff82] ring-2 ring-red-400 scale-110 shadow-md"
+            : "bg-[#fcff82]"
+        }`}
+        onClick={() => setViewIndex(0)}
+      />
+      <button
+        className={`${buttonBase} top-[295px] left-[960px] ${
+          viewIndex === 1
+            ? "bg-[#fcff82] ring-2 ring-red-400 scale-110 shadow-md"
+            : "bg-[#fcff82]"
+        }`}
+        onClick={() => setViewIndex(1)}
+      />
+      <button
+        className={`${buttonBase} top-[557px] left-[966px] ${
+          viewIndex === 2
+            ? "bg-[#fcff82] ring-2 ring-red-400 scale-110 shadow-md"
+            : "bg-[#fcff82]"
+        }`}
+        onClick={() => setViewIndex(2)}
+      />
+      <button
+        className={`${buttonBase} top-[763px] left-[955px] ${
+          viewIndex === 3
+            ? "bg-[#fcff82] ring-2 ring-red-400 scale-110 shadow-md"
+            : "bg-[#fcff82]"
+        }`}
+        onClick={() => setViewIndex(3)}
+      />
+      <button
+        className={`${buttonBase} top-[555px] left-[1293px] ${
+          viewIndex === 4
+            ? "bg-[#fcff82] ring-2 ring-red-400 scale-110 shadow-md"
+            : "bg-[#fcff82]"
+        }`}
+        onClick={() => setViewIndex(4)}
+      />
     </div>
   );
 }
