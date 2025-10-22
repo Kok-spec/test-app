@@ -32,7 +32,7 @@ function PanoramaWithArrows({ viewIndex, onNavigate }: Props) {
     ],
     // 右下4
     [{ position: [-100, 0, 0], next: 2, type: '←' },
-     { position: [50, 0, 0], next: 2, type: '↑' }
+     { position: [50, 0, 0], next: 0, type: '↑' }
     ],
   ];
 
