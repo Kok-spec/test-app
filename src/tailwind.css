@@ -5,6 +5,25 @@
   .all-\[unset\] {
     all: unset;
   }
+
+  .arrow-button {
+    background: white;
+    border-radius: 50%;
+    padding: 16px 20px;
+    font-size: 28px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .arrow-button:hover {
+    background: #f0f0f0;
+    transform: scale(1.2);
+  }
+
+  .zoom-effect {
+    animation: zoomIn 0.6s ease;
+  }
 }
 
 :root {
@@ -14,9 +33,6 @@
   --single-line-body-base-font-weight: 400;
   --single-line-body-base-letter-spacing: 0px;
   --single-line-body-base-line-height: 100%;
-}
-
-:root {
   --animate-spin: spin 1s linear infinite;
 }
 
@@ -55,12 +71,10 @@
     opacity: 0;
     animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
   }
-
   10% {
     opacity: 0.7;
     animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
   }
-
   to {
     opacity: 0.4;
   }
@@ -71,7 +85,6 @@
     opacity: 0;
     transform: translateY(-10px);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -83,7 +96,6 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -91,14 +103,10 @@
 }
 
 @keyframes shimmer {
-  0%,
-  90%,
-  to {
+  0%, 90%, to {
     background-position: calc(-100% - var(--shimmer-width)) 0;
   }
-
-  30%,
-  60% {
+  30%, 60% {
     background-position: calc(100% + var(--shimmer-width)) 0;
   }
 }
@@ -107,7 +115,6 @@
   0% {
     transform: translate(0);
   }
-
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
@@ -117,8 +124,25 @@
   0% {
     transform: translateY(0);
   }
-
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
 }
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@layer components {
+  .zoom-fade {
+    animation: zoomFade 0.8s ease forwards;
+  }
+}
+

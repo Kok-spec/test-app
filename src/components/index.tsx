@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PanoramaViewer from "./PanoramaViewer";
+import PanoramaWithArrows from "./PanoramaWithArrows";
 
 interface Props {
   className?: string;
@@ -15,7 +15,7 @@ function KokspecDesktop({ className = "" }: Props) {
     <div className={`relative w-[1440px] h-[1024px] bg-white ${className}`}>
       {/* 360度ビュー */}
       <div className="absolute top-[197px] left-[103px] w-[751px] h-[629px] bg-[#f9f9f9] overflow-hidden rounded-lg">
-        <PanoramaViewer viewIndex={viewIndex} />
+        <PanoramaWithArrows viewIndex={viewIndex} onNavigate={setViewIndex} />
       </div>
 
       {/* 他のUI */}

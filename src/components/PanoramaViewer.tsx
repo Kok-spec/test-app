@@ -2,12 +2,14 @@ import { Canvas, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import * as THREE from 'three';
 import { OrbitControls } from '@react-three/drei';
+import React from 'react';
 
 interface Props {
   viewIndex: number;
+  children?: React.ReactNode; // ✅ 追加
 }
 
-function PanoramaViewer({ viewIndex }: Props) {
+function PanoramaViewer({ viewIndex, children }: Props) {
   const images = [
     '/images/view1.jpg',
     '/images/view2.jpg',
@@ -32,6 +34,9 @@ function PanoramaViewer({ viewIndex }: Props) {
           <sphereGeometry args={[500, 60, 40]} />
           <meshBasicMaterial map={texture} side={THREE.BackSide} />
         </mesh>
+
+        {/* ✅ 矢印や追加要素をここで描画 */}
+        {children}
       </Canvas>
     </div>
   );
